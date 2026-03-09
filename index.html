@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="index.js"></script>
+</head>
+<body>
+<div class="header-wrap">
+    <h1 class="site-header">To-Do List</h1>
+</div>
+
+<div class="header-interaction">
+    <button id="add-button" class="interact-button">Add Item</button>
+    <button id="update-button" class="interact-button">Update</button>
+    <select name="pages" id="pages" class="interact-dropdown">
+        <option value="to-do">To-Do</option>
+        <option value="reminders">Reminders</option>
+    </select>
+
+</div>
+
+<div class="to-do-items">
+    <div class="to-do-item">
+        <input class="to-do-checkbox" type="checkbox" id="to-do-1">
+        <label for="to-do-1" class="to-do-checkbox-label">To-Do Title</label>
+        <p class="to-do-description">To-Do Description</p>
+    </div>
+</div>
+
+<div id="add-modal" class="modal">
+    <div class="modal-content">
+        <h2>Add To-Do Item</h2>
+        <div class="input-title">
+            <input type="text" id="todo-title" placeholder="Title">
+        </div>
+        <div class="input-description">
+            <textarea id="todo-description" placeholder="Description"></textarea>
+        </div>
+        <div class="save-cancel">
+            <button id="close-modal">Cancel</button>
+            <button id="save-todo">Save</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

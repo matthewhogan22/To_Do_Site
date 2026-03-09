@@ -1,0 +1,67 @@
+.header-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    background-color: #000;
+}
+
+.site-header {
+    color: #009DBF;
+}
+
+.to-do-checkbox-label {
+    color: #FFFFFF;
+}
+
+.to-do-description {
+    color: #FFFFFF;
+}
+
+.to-do-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.header-interaction {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.interact-button {
+    color: #FFFFFF;
+    background-color: darkgray;
+    border-radius: 15px;
+    width: 5%;
+}
+
+.interact-dropdown {
+    color: #FFFFFF;
+    background-color: darkgray;
+    border-radius: 15px;
+}
+
+.modal {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+.modal-content {
+    width: 50%
+}
+
+.input-title input,
+.input-description textarea {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.save-cancel {
+    display: flex;
+    justify-content: space-between;
+}
