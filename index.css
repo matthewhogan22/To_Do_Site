@@ -26,6 +26,17 @@ body {
     flex-direction: column;
 }
 
+.to-do-item {
+    max-width: 80%;
+    width: 100%;
+}
+
+.to-do-item-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
 .header-interaction {
     display: flex;
     justify-content: space-between;
@@ -64,4 +75,9 @@ body {
 .save-cancel {
     display: flex;
     justify-content: space-between;
+}
+
+.to-do-checkbox-label {
+    font-weight: bold;
+    font-size: 20px;
 }

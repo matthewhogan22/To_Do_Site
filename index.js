@@ -10,8 +10,10 @@ function validate_to_do(added_todo_text, added_todo_title) {
 function add_todo_visual(item) {
     $(".to-do-items").append(`
     <div class="to-do-item">
-        <input class="to-do-checkbox" type="checkbox">
-        <label class="to-do-checkbox-label">${item.title}</label>
+        <div class="to-do-item-header">
+            <input class="to-do-checkbox" type="checkbox">
+            <label class="to-do-checkbox-label">${item.title}</label>
+        </div>
         <p class="to-do-description">${item.text}</p>
     </div>
 `);
