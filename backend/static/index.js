@@ -27,7 +27,7 @@ function render_to_do_list() {
                             ${item.title}
                         </label>
                     </div>
-                    <p class="to-do-date ${completedClass}"> ${item.due_date || ""} </p>
+                    <p class="to-do-date ${completedClass}"> ${formatDate(item.due_date)} </p>
                 </div>
                 <p class="to-do-description ${completedClass}">
                     ${item.description}
@@ -35,6 +35,17 @@ function render_to_do_list() {
             </div>
         `);
     });
+}
+
+function formatDate(dateString) {
+    if (!dateString) return "";
+
+    const date = new Date(dateString);
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const year = date.getFullYear();
+
+    return `${month}-${day}-${year}`;
 }
 
 // loads To-Do items from the server
