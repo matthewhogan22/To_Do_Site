@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import sqlite3
 from pathlib import Path
 
@@ -9,6 +9,10 @@ def get_db_connection():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     return conn
+
+@app.route("/")
+def home():
+    return render_template("index.html")
 
 @app.route("/api/todos", methods=["GET"])
 def get_todos():
