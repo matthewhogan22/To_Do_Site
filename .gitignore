@@ -1,0 +1,38 @@
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# SQLite database files
+*.db
+*.sqlite3
+
+# Flask environment files
+.env
+
+# Logs
+*.log
+
+# VSCode
+.vscode/
+
+# JetBrains IDEs
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node modules (only if you later add npm tooling)
+node_modules/
+
+# Build / distribution
+build/
+dist/
+*.egg-info/
