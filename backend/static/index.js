@@ -20,11 +20,14 @@ function render_to_do_list() {
 
         container.append(`
             <div class="to-do-item" data-id="${item.id}">
-                <div class="to-do-item-header">
-                    <input class="to-do-checkbox" type="checkbox" ${checked}>
-                    <label class="to-do-checkbox-label ${completedClass}">
-                        ${item.title}
-                    </label>
+                <div class="to-do-heads">
+                    <div class="to-do-item-header">
+                        <input class="to-do-checkbox" type="checkbox" ${checked}>
+                        <label class="to-do-checkbox-label ${completedClass}">
+                            ${item.title}
+                        </label>
+                    </div>
+                    <p class="to-do-date ${completedClass}"> ${item.due_date || ""} </p>
                 </div>
                 <p class="to-do-description ${completedClass}">
                     ${item.description}
@@ -64,6 +67,7 @@ jQuery(async function($) {
 
     const title = $("#todo-title").val().trim();
     const description = $("#todo-description").val().trim();
+    const due_date = $("#todo-date").val();
 
     if (!validate_to_do(title, description)) {
         return;
@@ -76,7 +80,8 @@ jQuery(async function($) {
         },
         body: JSON.stringify({
             title: title,
-            description: description
+            description: description,
+            due_date: due_date
         })
     });
 
@@ -88,38 +93,26 @@ jQuery(async function($) {
     $("#add-modal").hide();
     $("#todo-title").val("");
     $("#todo-description").val("");
+    $("#todo-date").val("");
 
     await loadTodos();
     });
 
     // Updates list based on checking boxes to remove from list
-    $("#update-button").on("click", async function () {
+    $(document).on("change", ".to-do-checkbox", async function () {
 
-        const updates = [];
+        const id = $(this).closest(".to-do-item").data("id");
+        const completed = $(this).is(":checked") ? 1 : 0;
 
-        $(".to-do-checkbox").each(function () {
-            const id = $(this).closest(".to-do-item").data("id");
-            const completed = $(this).is(":checked") ? 1 : 0;
-
-            updates.push({ id, completed });
+        await fetch(`/api/todos/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                completed: completed
+            })
         });
-
-        for (const item of updates) {
-
-            const response = await fetch(`/api/todos/${item.id}`, {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    completed: item.completed
-                })
-            });
-
-            if (!response.ok) {
-                console.error(`Failed to update todo ${item.id}`);
-            }
-        }
 
         await loadTodos();
     });

@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS todos (
     title TEXT NOT NULL,
     description TEXT NOT NULL,
     completed INTEGER NOT NULL DEFAULT 0,
+    due_date TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
 """)

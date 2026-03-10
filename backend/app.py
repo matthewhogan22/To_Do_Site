@@ -18,7 +18,7 @@ def home():
 def get_todos():
     conn = get_db_connection()
     rows = conn.execute(
-        "SELECT id, title, description, completed, created_at FROM todos ORDER BY id DESC"
+        "SELECT id, title, description, completed, due_date, created_at FROM todos ORDER BY id DESC"
         ).fetchall()
     conn.close()
 
@@ -30,20 +30,21 @@ def create_todo():
     data = request.get_json(silent=True) or {}
     title = (data.get("title") or "").strip()
     description = (data.get("description") or "").strip()
+    due_date = (data.get("due_date") or "").strip()
 
     if not title or not description:
         return jsonify({"error": "Title and description are required."}), 400
     
     conn = get_db_connection()
     cur = conn.execute(
-        "INSERT INTO todos (title, description) VALUES (?, ?)",
-        (title, description),
+        "INSERT INTO todos (title, description, due_date) VALUES (?, ?, ?)",
+        (title, description, due_date),
     )
     conn.commit()
 
     new_id = cur.lastrowid
     row = conn.execute(
-        "SELECT id, title, description, completed, created_at FROM todos WHERE id = ?",
+        "SELECT id, title, description, completed, due_date, created_at FROM todos WHERE id = ?",
         (new_id,),
     ).fetchone()
     conn.close()
