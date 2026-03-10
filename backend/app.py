@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify, render_template
 import sqlite3
 from pathlib import Path
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="templates", static_folder="static")
 DB_PATH = Path(__file__).parent / "todo.db"
 
 def get_db_connection():

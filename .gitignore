@@ -8,6 +8,7 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+*.py[cod]
 
 # SQLite database files
 *.db
@@ -15,6 +16,7 @@ __pycache__/
 
 # Flask environment files
 .env
+.env.*
 
 # Logs
 *.log
@@ -29,10 +31,21 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# Node modules (only if you later add npm tooling)
+# Node modules (if frontend tooling is added later)
 node_modules/
 
-# Build / distribution
+# Python packaging / build
 build/
 dist/
 *.egg-info/
+.eggs/
+
+# Testing
+.pytest_cache/
+
+# Coverage reports
+.coverage
+htmlcov/
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
