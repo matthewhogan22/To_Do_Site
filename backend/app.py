@@ -64,5 +64,20 @@ def delete_todo(todo_id):
     
     return jsonify({"success": True, "deleted_id": todo_id})
 
+@app.route("/api/todos/<int:todo_id>", methods=["PATCH"])
+def update_todo(todo_id):
+    data = request.get_json()
+    completed = data.get("completed")
+
+    conn = get_db_connection()
+    cur = conn.execute(
+        "UPDATE todos SET completed = ? WHERE id = ?",
+        (completed, todo_id),
+    )
+    conn.commit()
+    conn.close()
+
+    return jsonify({"success": True})
+
 if __name__ == "__main__":
     app.run(debug=True)

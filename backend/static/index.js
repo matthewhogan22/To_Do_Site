@@ -14,13 +14,21 @@ function render_to_do_list() {
     container.empty();
 
     to_do_list.forEach(function(item) {
+
+        const completedClass = item.completed ? "completed" : "";
+        const checked = item.completed ? "checked" : "";
+
         container.append(`
             <div class="to-do-item" data-id="${item.id}">
                 <div class="to-do-item-header">
-                    <input class="to-do-checkbox" type="checkbox">
-                    <label class="to-do-checkbox-label">${item.title}</label>
+                    <input class="to-do-checkbox" type="checkbox" ${checked}>
+                    <label class="to-do-checkbox-label ${completedClass}">
+                        ${item.title}
+                    </label>
                 </div>
-                <p class="to-do-description">${item.description}</p>
+                <p class="to-do-description ${completedClass}">
+                    ${item.description}
+                </p>
             </div>
         `);
     });
@@ -87,22 +95,33 @@ jQuery(async function($) {
     // Updates list based on checking boxes to remove from list
     $("#update-button").on("click", async function () {
 
-    const checkedIds = [];
+        const updates = [];
 
-    $(".to-do-checkbox:checked").each(function () {
-        const id = $(this).closest(".to-do-item").data("id");
-        checkedIds.push(id);
-    });
+        $(".to-do-checkbox").each(function () {
+            const id = $(this).closest(".to-do-item").data("id");
+            const completed = $(this).is(":checked") ? 1 : 0;
 
-    for (const id of checkedIds) {
-
-        await fetch(`/api/todos/${id}`, {
-            method: "DELETE"
+            updates.push({ id, completed });
         });
 
-    }
+        for (const item of updates) {
 
-    await loadTodos();
+            const response = await fetch(`/api/todos/${item.id}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    completed: item.completed
+                })
+            });
+
+            if (!response.ok) {
+                console.error(`Failed to update todo ${item.id}`);
+            }
+        }
+
+        await loadTodos();
     });
 
 

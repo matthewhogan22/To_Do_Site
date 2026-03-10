@@ -61,7 +61,10 @@ body {
     align-items: center;
     flex-direction: column;
     width: 100%;
+    background-color: gray;
+
 }
+
 .modal-content {
     width: 50%
 }
@@ -80,4 +83,9 @@ body {
 .to-do-checkbox-label {
     font-weight: bold;
     font-size: 20px;
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
 }
