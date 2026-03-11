@@ -68,17 +68,37 @@ def delete_todo(todo_id):
 @app.route("/api/todos/<int:todo_id>", methods=["PATCH"])
 def update_todo(todo_id):
     data = request.get_json()
-    completed = data.get("completed")
 
     conn = get_db_connection()
-    cur = conn.execute(
-        "UPDATE todos SET completed = ? WHERE id = ?",
-        (completed, todo_id),
+
+    # get existing values
+    todo = conn.execute(
+        "SELECT * FROM todos WHERE id = ?",
+        (todo_id,)
+    ).fetchone()
+
+    if not todo:
+        conn.close()
+        return {"error": "Todo not found"}, 404
+
+    title = data.get("title", todo["title"])
+    description = data.get("description", todo["description"])
+    due_date = data.get("due_date", todo["due_date"])
+    completed = data.get("completed", todo["completed"])
+
+    conn.execute(
+        """
+        UPDATE todos
+        SET title = ?, description = ?, due_date = ?, completed = ?
+        WHERE id = ?
+        """,
+        (title, description, due_date, completed, todo_id),
     )
+
     conn.commit()
     conn.close()
 
-    return jsonify({"success": True})
+    return {"message": "Todo updated"}, 200
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)
