@@ -160,9 +160,6 @@ jQuery(async function($) {
             headers: {
                 "Content-Type":"application/json"
             },
-            body: JSON.stringify({
-                completed: completed
-            })
         });
     });
 
