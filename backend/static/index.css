@@ -106,7 +106,13 @@ body {
     color: #FFFFFF;
 }
 
-.edit-delete-todo {
+.edit-todo {
+    color: #FFFFFF;
+    background-color: darkgray;
+    border-radius: 15px;
+}
+
+.delete-todo {
     color: #FFFFFF;
     background-color: darkgray;
     border-radius: 15px;

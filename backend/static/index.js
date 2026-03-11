@@ -35,8 +35,8 @@ function render_to_do_list() {
                         </label>
                     </div>
                     <div class="to-do-right">
-                        <button class="edit-delete-todo">Edit</button>
-                        <button class="edit-delete-todo">Delete</button>
+                        <button class="edit-todo">Edit</button>
+                        <button class="delete-todo">Delete</button>
                         <p class="to-do-date ${completedClass}">
                             ${formatDate(item.due_date)}
                         </p>
