@@ -77,6 +77,9 @@ jQuery(async function($) {
     // Opens interaction pane for adding To-Do item
     var add_button = $("#add-button");
     add_button.on("click", async function(e) {
+        $("#todo-title").val("");
+        $("#todo-description").val("");
+        $("#todo-date").val("");
         $("#add-modal").show();
     });
 
@@ -89,59 +92,59 @@ jQuery(async function($) {
     // Logic for adding an item to the list
     $("#save-todo").on("click", async function () {
 
-    const title = $("#todo-title").val().trim();
-    const description = $("#todo-description").val().trim();
-    const due_date = $("#todo-date").val();
+        const title = $("#todo-title").val().trim();
+        const description = $("#todo-description").val().trim();
+        const due_date = $("#todo-date").val();
 
-    const editId = $("#add-modal").data("edit-id");
+        const editId = $("#add-modal").data("edit-id");
 
-    if (!validate_to_do(title, description)) {
-        return;
-    }
-
-    if (!editId) {
-        const response = await fetch("/api/todos", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                title: title,
-                description: description,
-                due_date: due_date
-            })
-        });
-
-        if (!response.ok) {
-            console.error("Failed to create todo");
+        if (!validate_to_do(title, description)) {
             return;
         }
-    } else {
-        const response = await fetch(`/api/todos/${editId}`, {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                title: title,
-                description: description,
-                due_date: due_date
-            })
-        });
 
-        if (!response.ok) {
-            console.error("Failed to update todo");
-            return;
+        if (!editId) {
+            const response = await fetch("/api/todos", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    title: title,
+                    description: description,
+                    due_date: due_date
+                })
+            });
+
+            if (!response.ok) {
+                console.error("Failed to create todo");
+                return;
+            }
+        } else {
+            const response = await fetch(`/api/todos/${editId}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    title: title,
+                    description: description,
+                    due_date: due_date
+                })
+            });
+
+            if (!response.ok) {
+                console.error("Failed to update todo");
+                return;
+            }
         }
-    }
 
-    $("#add-modal").hide();
-    $("#add-modal").removeData("edit-id");
-    $("#todo-title").val("");
-    $("#todo-description").val("");
-    $("#todo-date").val("");
+        $("#add-modal").hide();
+        $("#add-modal").removeData("edit-id");
+        $("#todo-title").val("");
+        $("#todo-description").val("");
+        $("#todo-date").val("");
 
-    await loadTodos();
+        await loadTodos();
     });
 
     // Updates list based on checking boxes to remove from list
