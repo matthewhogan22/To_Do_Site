@@ -13,7 +13,14 @@ function render_to_do_list() {
     const container = $(".to-do-items");
     container.empty();
 
+    const showCompleted = $("#filter_check").is(":checked");
+
     to_do_list.forEach(function(item) {
+
+        // If filter is OFF and item is completed → skip it
+        if (!showCompleted && item.completed) {
+            return;
+        }
 
         const completedClass = item.completed ? "completed" : "";
         const checked = item.completed ? "checked" : "";
@@ -27,7 +34,9 @@ function render_to_do_list() {
                             ${item.title}
                         </label>
                     </div>
-                    <p class="to-do-date ${completedClass}"> ${formatDate(item.due_date)} </p>
+                    <p class="to-do-date ${completedClass}">
+                        ${formatDate(item.due_date)}
+                    </p>
                 </div>
                 <p class="to-do-description ${completedClass}">
                     ${item.description}
@@ -126,6 +135,11 @@ jQuery(async function($) {
         });
 
         await loadTodos();
+    });
+
+    // Handles when the checkbox for filter selected
+    $("#filter_check").on("change", function () {
+        render_to_do_list();
     });
 
 
