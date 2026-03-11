@@ -153,9 +153,17 @@ jQuery(async function($) {
     });
 
     // Event Listener for Delete To Do Item
-    $(".to-do-items").on("click", ".delete-todo", function() {
+    $(".to-do-items").on("click", ".delete-todo", async function() {
         const id = $(this).closest(".to-do-item").data("id");
-        console.log("Delete item:", id);
+        await fetch(`/api/todos/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify({
+                completed: completed
+            })
+        });
     });
 
 
