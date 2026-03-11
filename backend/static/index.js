@@ -117,7 +117,7 @@ jQuery(async function($) {
             return;
         }
     } else {
-        const response = await fetch(`/api/todos/${editid}`, {
+        const response = await fetch(`/api/todos/${editId}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
