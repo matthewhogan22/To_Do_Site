@@ -110,5 +110,9 @@ body {
     color: #FFFFFF;
     background-color: darkgray;
     border-radius: 15px;
-    width: 5%;
+}
+
+.to-do-right {
+    display: flex;
+    align-items: flex-end;
 }
