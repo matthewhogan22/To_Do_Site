@@ -161,6 +161,8 @@ jQuery(async function($) {
                 "Content-Type":"application/json"
             },
         });
+
+        await loadTodos();
     });
 
 
