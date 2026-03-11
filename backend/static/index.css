@@ -105,3 +105,10 @@ body {
 .filter_label {
     color: #FFFFFF;
 }
+
+.edit-delete-todo {
+    color: #FFFFFF;
+    background-color: darkgray;
+    border-radius: 15px;
+    width: 5%;
+}

@@ -34,9 +34,13 @@ function render_to_do_list() {
                             ${item.title}
                         </label>
                     </div>
-                    <p class="to-do-date ${completedClass}">
-                        ${formatDate(item.due_date)}
-                    </p>
+                    <div class="to-do-right">
+                        <button class="edit-delete-todo">Edit</button>
+                        <button class="edit-delete-todo">Delete</button>
+                        <p class="to-do-date ${completedClass}">
+                            ${formatDate(item.due_date)}
+                        </p>
+                    </div>
                 </div>
                 <p class="to-do-description ${completedClass}">
                     ${item.description}
@@ -140,6 +144,18 @@ jQuery(async function($) {
     // Handles when the checkbox for filter selected
     $("#filter_check").on("change", function () {
         render_to_do_list();
+    });
+
+    // Event Listener for Edit To Do Item
+    $(".to-do-items").on("click", ".edit-todo", function() {
+        const id = $(this).closest(".to-do-item").data("id");
+        console.log("Edit item:", id);
+    });
+
+    // Event Listener for Delete To Do Item
+    $(".to-do-items").on("click", ".delete-todo", function() {
+        const id = $(this).closest(".to-do-item").data("id");
+        console.log("Delete item:", id);
     });
 
 
