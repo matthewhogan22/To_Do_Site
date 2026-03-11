@@ -11,7 +11,7 @@ A lightweight full-stack to-do list web application built with **Flask**, **SQLi
   - description
   - due date
 - Mark tasks complete or incomplete
-- Delete tasks
+- Edit/Delete tasks
 - Responsive UI accessible from any device
 - Persistent storage using SQLite
 - REST API backend
