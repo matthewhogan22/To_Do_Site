@@ -121,4 +121,5 @@ body {
 .to-do-right {
     display: flex;
     align-items: flex-end;
+    gap: 3px;
 }

@@ -93,28 +93,50 @@ jQuery(async function($) {
     const description = $("#todo-description").val().trim();
     const due_date = $("#todo-date").val();
 
+    const editId = $("#add-modal").data("edit-id");
+
     if (!validate_to_do(title, description)) {
         return;
     }
 
-    const response = await fetch("/api/todos", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            title: title,
-            description: description,
-            due_date: due_date
-        })
-    });
+    if (!editId) {
+        const response = await fetch("/api/todos", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                title: title,
+                description: description,
+                due_date: due_date
+            })
+        });
 
-    if (!response.ok) {
-        console.error("Failed to create todo");
-        return;
+        if (!response.ok) {
+            console.error("Failed to create todo");
+            return;
+        }
+    } else {
+        const response = await fetch(`/api/todos/${editid}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                title: title,
+                description: description,
+                due_date: due_date
+            })
+        });
+
+        if (!response.ok) {
+            console.error("Failed to update todo");
+            return;
+        }
     }
 
     $("#add-modal").hide();
+    $("#add-modal").removeData("edit-id");
     $("#todo-title").val("");
     $("#todo-description").val("");
     $("#todo-date").val("");
@@ -149,7 +171,16 @@ jQuery(async function($) {
     // Event Listener for Edit To Do Item
     $(".to-do-items").on("click", ".edit-todo", function() {
         const id = $(this).closest(".to-do-item").data("id");
-        console.log("Edit item:", id);
+        const item = to_do_list.find(todo => todo.id === id);
+
+        if (!item) return;
+
+        $("#todo-title").val(item.title);
+        $("#todo-description").val(item.description);
+        $("#todo-date").val(item.due_date);
+
+        $("#add-modal").data("edit-id", id);
+        $("#add-modal").show();
     });
 
     // Event Listener for Delete To Do Item
