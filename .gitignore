@@ -42,6 +42,7 @@ dist/
 
 # Testing
 .pytest_cache/
+update.txt
 
 # Coverage reports
 .coverage

@@ -12,18 +12,17 @@
     <h1 class="site-header">To-Do List</h1>
 </div>
 
+<!-- Header containing interaction buttons for add, filter, and page -->
 <div class="header-interaction">
     <button id="add-button" class="interact-button">Add Item</button>
+    <input type="checkbox" id="filter_check" class="filter_check">
     <select name="pages" id="pages" class="interact-dropdown">
         <option value="to-do">To-Do</option>
         <option value="reminders">Reminders</option>
     </select>
-
 </div>
 
-<div class="to-do-items">
-</div>
-
+<!-- Interaction Pane for Adding Tasks -->
 <div id="add-modal" class="modal">
     <div class="modal-content">
         <h2>Add To-Do Item</h2>
@@ -41,6 +40,9 @@
             <button id="save-todo">Save</button>
         </div>
     </div>
+</div>
+
+<div class="to-do-items">
 </div>
 </body>
 </html>
