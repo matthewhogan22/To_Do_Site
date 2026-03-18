@@ -30,8 +30,9 @@ body {
 .to-do-item {
     max-width: 80%;
     width: 100%;
-    background: grey;
+    background: #4a4a49;
     border-radius: 15px;
+    border: 3px #4a4a49;
 }
 
 .to-do-item-header {
