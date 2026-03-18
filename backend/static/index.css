@@ -24,11 +24,14 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 10px;
 }
 
 .to-do-item {
     max-width: 80%;
     width: 100%;
+    background: grey;
+    border-radius: 15px;
 }
 
 .to-do-item-header {
