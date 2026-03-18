@@ -32,7 +32,8 @@ body {
     width: 100%;
     background: #4a4a49;
     border-radius: 15px;
-    border: 3px #4a4a49;
+    border: 3px solid #4a4a49;
+    padding: 5px;
 }
 
 .to-do-item-header {
