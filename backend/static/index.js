@@ -201,10 +201,12 @@ jQuery(async function($) {
 
     const dropdown = document.getElementById("pages");
 
-    dropdown.addEventListener("change", function () {
-        const selectedPage = this.value;
-        window.location.href = selectedPage;
-    });
+    if (dropdown) {
+        dropdown.addEventListener("change", function () {
+            const selectedPage = this.value;
+            window.location.href = selectedPage;
+        });
+    }
 
 
 });
