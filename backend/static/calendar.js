@@ -27,6 +27,7 @@ jQuery(async function($) {
     console.log(getNumDaysInMonth(month))
 
     startDay = dayOfWeekOfMonth + 1
+    console.log(startDay)
 
     for (let i = 0; i < getNumDaysInMonth(month); i++) {
         const item = document.getElementById(`day${startDay + i}`);
