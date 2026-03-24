@@ -2,7 +2,7 @@
 
 const currDate = new Date();
 var year = currDate.getFullYear();
-var month = currDate.getMonth();
+var month = currDate.getMonth() + 1;
 var firstDayOfMonth = new Date(year, month, 1);
 var dayOfWeekOfMonth = firstDayOfMonth.getDay();
 var numDaysInMonth = 0;
