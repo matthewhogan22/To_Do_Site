@@ -27,5 +27,9 @@ table, th, td {
 
 .cal-day {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+}
+
+.day-header {
+    color: white;
 }

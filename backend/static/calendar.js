@@ -31,7 +31,7 @@ jQuery(async function($) {
     for (let i = 0; i < getNumDaysInMonth(month); i++) {
         const item = document.getElementById(`day${startDay + i}`);
         item.innerHTML +=   `<div class="cal-day">
-                                <p class="site-header">
+                                <p class="day-header">
                                     ${i+1}
                                 </p>
                             </div>`
