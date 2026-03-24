@@ -2,14 +2,14 @@
 
 const currDate = new Date();
 var year = currDate.getFullYear();
-var month = currDate.getMonth() + 1;
+var month = currDate.getMonth();
 var firstDayOfMonth = new Date(year, month, 1);
 var dayOfWeekOfMonth = firstDayOfMonth.getDay();
 var numDaysInMonth = 0;
 
 function getNumDaysInMonth(month) {
-    const thirtyOne = [1,3,5,7,8,10,12]
-    const thirty = [4,6,9,11]
+    const thirtyOne = [0,2,4,6,7,9,11]
+    const thirty = [3,5,8,10]
     if (thirtyOne.includes(month)) {
         return 31
     } else if (thirty.includes(month)){
@@ -25,4 +25,15 @@ jQuery(async function($) {
     console.log(currDate)
     console.log(dayOfWeekOfMonth)
     console.log(getNumDaysInMonth(month))
+
+    startDay = dayOfWeekOfMonth + 1
+
+    for (let i = 0; i < getNumDaysInMonth(month); i++) {
+        const item = document.getElementById(`day${startDay + i}`);
+        const newDiv = document.createElement("div")
+        newDiv.textContent = i + 1;
+        newDiv.class = "cal-day"
+
+        item.append(newDiv)
+    }
 });
