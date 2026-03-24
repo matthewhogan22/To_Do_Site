@@ -30,17 +30,11 @@ jQuery(async function($) {
 
     for (let i = 0; i < getNumDaysInMonth(month); i++) {
         const item = document.getElementById(`day${startDay + i}`);
-        // const newDiv = document.createElement("div")
-        // const dateHead = document.createElement("p")
-        // dateHead.textContent = i + 1;
-        // newDiv.class = "cal-day"
-        // newDiv.append(dateHead)
-        // item.append(newDiv)
-        item.append(`<div class="cal-day">
-                        <p class="site-header">
-                            ${i+1}
-                        </p>
-                    </div>`
-                )
+        item.innerHTML +=   `<div class="cal-day">
+                                <p class="site-header">
+                                    ${i+1}
+                                </p>
+                            </div>`
+                
     }
 });
