@@ -27,14 +27,14 @@ jQuery(async function($) {
     console.log(getNumDaysInMonth(month))
 
     var startDay = dayOfWeekOfMonth + 1
-    console.log(startDay)
 
     for (let i = 0; i < getNumDaysInMonth(month); i++) {
         const item = document.getElementById(`day${startDay + i}`);
         const newDiv = document.createElement("div")
-        newDiv.textContent = i + 1;
+        const dateHead = document.createElement("p")
+        dateHead.textContent = i + 1;
         newDiv.class = "cal-day"
-
+        newDiv.append(dateHead)
         item.append(newDiv)
     }
 });
