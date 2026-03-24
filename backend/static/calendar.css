@@ -1,0 +1,17 @@
+.calendar-head {
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    background-color: #000;
+}
+
+.site-header {
+    color: #009DBF;
+}
+
+table, th, td {
+    border: 1px solid white;
+    color: white;
+}
