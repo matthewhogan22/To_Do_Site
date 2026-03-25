@@ -18,6 +18,18 @@ function getNumDaysInMonth(month) {
     return 28
 }
 
+function format_calendar(startDay) {
+    for (let i = 0; i < getNumDaysInMonth(month); i++) {
+            const item = document.getElementById(`day${startDay + i}`);
+            item.innerHTML +=   `<div class="cal-day">
+                                    <p class="day-header">
+                                        ${i+1}
+                                    </p>
+                                </div>`
+                    
+        }
+}
+
 
 jQuery(async function($) {
     console.log("Calendar Ready");
@@ -27,14 +39,22 @@ jQuery(async function($) {
     console.log(getNumDaysInMonth(month))
 
     var startDay = dayOfWeekOfMonth + 1
+    format_calendar(startDay)
 
-    for (let i = 0; i < getNumDaysInMonth(month); i++) {
-        const item = document.getElementById(`day${startDay + i}`);
-        item.innerHTML +=   `<div class="cal-day">
-                                <p class="day-header">
-                                    ${i+1}
-                                </p>
-                            </div>`
-                
-    }
+    var next_button = $("#next-month");
+    next_button.on("click", async function e() {
+        if (month != 11) {
+            month = month + 1;
+        } else {
+            month = 0;
+            year = year + 1;
+        }
+
+        var newFirstDayOfMonth = new Date(year, month, 1);
+        var newDayOfWeekOfMonth = newFirstDayOfMonth.getDay();
+        format_calendar(newDayOfWeekOfMonth + 1)
+    });
+
+
+    var back_button = $("#back-month");
 });
