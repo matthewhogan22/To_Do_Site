@@ -33,3 +33,14 @@ table, th, td {
 .day-header {
     color: white;
 }
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.month-header {
+    color: white;
+    font-weight: bold;
+    font-size: medium;
+}
