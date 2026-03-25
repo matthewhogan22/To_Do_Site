@@ -108,4 +108,12 @@ jQuery(async function($) {
         var newDayOfWeekOfMonth = newFirstDayOfMonth.getDay();
         format_calendar(newDayOfWeekOfMonth + 1)
     });
+
+    const dropdown = document.getElementById("pages");
+    if (dropdown) {
+        dropdown.addEventListener("change", function () {
+            const selectedPage = this.value;
+            window.location.href = selectedPage;
+        });
+    }
 });
