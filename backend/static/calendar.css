@@ -37,10 +37,17 @@ table, th, td {
 .calendar-header {
     display: flex;
     justify-content: space-between;
+    padding: 10px;
 }
 
 .month-header {
     color: white;
     font-weight: bold;
     font-size: medium;
+}
+
+.month-button {
+    color: white;
+    background-color: grey;
+    border-radius: 15px;
 }
