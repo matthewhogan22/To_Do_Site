@@ -96,4 +96,16 @@ jQuery(async function($) {
 
 
     var back_button = $("#back-month");
+    back_button.on("click", async function e() {
+        if (month != 0) {
+            month = month - 1;
+        } else {
+            month = 11;
+            year = year - 1;
+        }
+
+        var newFirstDayOfMonth = new Date(year, month, 1);
+        var newDayOfWeekOfMonth = newFirstDayOfMonth.getDay();
+        format_calendar(newDayOfWeekOfMonth + 1)
+    });
 });
