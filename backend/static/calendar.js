@@ -32,9 +32,9 @@ function format_calendar(startDay) {
 }
 
 function clear_calendar() {
-    for (let i = 0; i <=42; i++) {
-        const item = document.getElementById(`day${i}`);
-        item.innerHTML = '';
+    for (let i = 1; i <=42; i++) {
+        const thing = document.getElementById(`day${i}`);
+        thing.innerHTML = '';
     }
 }
 
