@@ -19,9 +19,9 @@ function getNumDaysInMonth(month) {
 }
 
 function format_calendar(startDay) {
+    clear_calendar()
     for (let i = 0; i < getNumDaysInMonth(month); i++) {
             const item = document.getElementById(`day${startDay + i}`);
-            item.innerHTML = ''
             item.innerHTML +=   `<div class="cal-day">
                                     <p class="day-header">
                                         ${i+1}
@@ -29,6 +29,13 @@ function format_calendar(startDay) {
                                 </div>`
                     
         }
+}
+
+function clear_calendar() {
+    for (let i = 0; i <=42; i++) {
+        const item = document.getElementById(`day${i}`);
+        item.innerHTML = '';
+    }
 }
 
 
