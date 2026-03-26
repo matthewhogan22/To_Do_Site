@@ -63,3 +63,10 @@ table, th, td {
     display: flex;
     justify-content: flex-end;
 }
+
+.interact-button {
+    color: #FFFFFF;
+    background-color: darkgray;
+    border-radius: 15px;
+    width: 5%;
+}

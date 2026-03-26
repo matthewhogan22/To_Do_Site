@@ -148,4 +148,9 @@ jQuery(async function($) {
             window.location.href = selectedPage;
         });
     }
+
+    var refresh_button = $("#refresh-button");
+    refresh_button.on("click", async function e() {
+        renderCalendar();
+    });
 });
