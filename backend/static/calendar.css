@@ -27,7 +27,8 @@ table, th, td {
 
 .cal-day {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .day-header {
