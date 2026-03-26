@@ -82,6 +82,21 @@ async function getTodos() {
     to_do_list = data;
 }
 
+function renderCalendar() {
+    to_do_list.forEach(function(item) {
+        var date_split = [];
+        var date_month = -1;
+        if (item.due_date) {
+            date_split = item.due_date.split("-");
+            date_month = Number(date_split[1]);
+        }
+        if (!item.completed && date_month == month) {
+            var dayToAdd = document.getElementById(`div-day-${(Number(date_split[3]) - 1)}`);
+            dayToAdd.innerHTML += `<p>${item.title}</p>`
+        }
+    });
+}
+
 
 jQuery(async function($) {
     console.log("Calendar Ready");
