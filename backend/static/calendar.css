@@ -61,12 +61,11 @@ table, th, td {
 
 .interact-buttons {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 .interact-button {
     color: #FFFFFF;
     background-color: darkgray;
     border-radius: 15px;
-    width: 5%;
 }
