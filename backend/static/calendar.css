@@ -23,6 +23,13 @@ table, th, td {
 
 .main-calendar {
     width: 100%;
+    table-layout: fixed;
+}
+
+.main-calendar td,
+.main-calendar th {
+    width: 14.28%; /* 100% / 7 days */
+    overflow: hidden; /* prevents stretching */
 }
 
 .cal-day {
