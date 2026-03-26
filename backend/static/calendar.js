@@ -124,6 +124,7 @@ jQuery(async function($) {
         var newDayOfWeekOfMonth = newFirstDayOfMonth.getDay();
         format_calendar(newDayOfWeekOfMonth + 1)
         console.log(to_do_list)
+        renderCalendar();
     });
 
 
@@ -139,6 +140,7 @@ jQuery(async function($) {
         var newFirstDayOfMonth = new Date(year, month, 1);
         var newDayOfWeekOfMonth = newFirstDayOfMonth.getDay();
         format_calendar(newDayOfWeekOfMonth + 1)
+        renderCalendar();
     });
 
     const dropdown = document.getElementById("pages");
