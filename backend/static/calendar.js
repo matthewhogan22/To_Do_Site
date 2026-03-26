@@ -90,8 +90,8 @@ function renderCalendar() {
             date_split = item.due_date.split("-");
             date_month = Number(date_split[1]);
         }
-        if (!item.completed && date_month == month) {
-            var addIndex = (Number(date_split[3]) - 1)
+        if (!item.completed && (date_month - 1) == month) {
+            var addIndex = (Number(date_split[2]) - 1)
             var dayToAdd = document.getElementById(`div-day-${addIndex}`);
             console.log(item.title);
             dayToAdd.innerHTML += `<p>${item.title}</p>`
