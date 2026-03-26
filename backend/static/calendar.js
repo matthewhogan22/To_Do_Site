@@ -82,7 +82,8 @@ async function getTodos() {
     to_do_list = data;
 }
 
-function renderCalendar() {
+async function renderCalendar() {
+    clear_calendar();
     to_do_list.forEach(function(item) {
         var date_split = [];
         var date_month = -1;
@@ -103,11 +104,9 @@ function renderCalendar() {
 jQuery(async function($) {
     console.log("Calendar Ready");
 
-    getTodos();
+    await getTodos();
+    await renderCalendar();
     
-    // console.log(currDate)
-    // console.log(dayOfWeekOfMonth)
-    // console.log(getNumDaysInMonth(month))
     console.log(to_do_list)
 
     var startDay = dayOfWeekOfMonth + 1
@@ -155,7 +154,7 @@ jQuery(async function($) {
     refresh_button.on("click", async function e() {
         console.log("Calendar rendering");
         console.log(to_do_list);
-        renderCalendar();
+        await renderCalendar();
         console.log("Render complete");
     });
 });
