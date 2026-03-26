@@ -91,7 +91,9 @@ function renderCalendar() {
             date_month = Number(date_split[1]);
         }
         if (!item.completed && date_month == month) {
-            var dayToAdd = document.getElementById(`div-day-${(Number(date_split[3]) - 1)}`);
+            var addIndex = (Number(date_split[3]) - 1)
+            var dayToAdd = document.getElementById(`div-day-${addIndex}`);
+            console.log(item.title);
             dayToAdd.innerHTML += `<p>${item.title}</p>`
         }
     });
@@ -151,6 +153,9 @@ jQuery(async function($) {
 
     var refresh_button = $("#refresh-button");
     refresh_button.on("click", async function e() {
+        console.log("Calendar rendering");
+        console.log(to_do_list);
         renderCalendar();
+        console.log("Render complete");
     });
 });
