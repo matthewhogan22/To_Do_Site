@@ -105,12 +105,12 @@ jQuery(async function($) {
     console.log("Calendar Ready");
 
     await getTodos();
-    await renderCalendar();
     
     console.log(to_do_list)
 
     var startDay = dayOfWeekOfMonth + 1
     format_calendar(startDay)
+    await renderCalendar();
 
     var next_button = $("#next-month");
     next_button.on("click", async function e() {
