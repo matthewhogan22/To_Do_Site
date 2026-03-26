@@ -82,7 +82,7 @@ async function getTodos() {
     to_do_list = data;
 }
 
-async function renderCalendar() {
+function renderCalendar() {
     clear_calendar();
     to_do_list.forEach(function(item) {
         var date_split = [];
@@ -110,7 +110,7 @@ jQuery(async function($) {
 
     var startDay = dayOfWeekOfMonth + 1
     format_calendar(startDay)
-    await renderCalendar();
+    renderCalendar();
 
     var next_button = $("#next-month");
     next_button.on("click", async function e() {
