@@ -83,7 +83,6 @@ async function getTodos() {
 }
 
 function renderCalendar() {
-    clear_calendar();
     to_do_list.forEach(function(item) {
         var date_split = [];
         var date_month = -1;
