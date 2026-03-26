@@ -50,7 +50,7 @@ function format_calendar(startDay) {
     clear_calendar()
     for (let i = 0; i < getNumDaysInMonth(month); i++) {
             const item = document.getElementById(`day${startDay + i}`);
-            item.innerHTML +=   `<div class="cal-day">
+            item.innerHTML +=   `<div class="cal-day" id="div-day-${i}" onclick="dayClicked(this)">
                                     <p class="day-header">
                                         ${i+1}
                                     </p>
@@ -67,6 +67,10 @@ function clear_calendar() {
         const thing = document.getElementById(`day${i}`);
         thing.innerHTML = '';
     }
+}
+
+function dayClicked(element) {
+    console.log(element.id);
 }
 
 
