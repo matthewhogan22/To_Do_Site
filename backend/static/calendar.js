@@ -6,6 +6,7 @@ var month = currDate.getMonth();
 var firstDayOfMonth = new Date(year, month, 1);
 var dayOfWeekOfMonth = firstDayOfMonth.getDay();
 var numDaysInMonth = 0;
+var to_do_list = [];
 
 function getNumDaysInMonth(month) {
     const thirtyOne = [0,2,4,6,7,9,11]
@@ -75,13 +76,22 @@ function dayClicked(element) {
     selectedDay.innerHTML += `<p>Event</p>`
 }
 
+async function getTodos() {
+    const response = await fetch("/api/todos");
+    const data = await response.json();
+    to_do_list = data;
+}
+
 
 jQuery(async function($) {
     console.log("Calendar Ready");
+
+    getTodos();
     
-    console.log(currDate)
-    console.log(dayOfWeekOfMonth)
-    console.log(getNumDaysInMonth(month))
+    // console.log(currDate)
+    // console.log(dayOfWeekOfMonth)
+    // console.log(getNumDaysInMonth(month))
+    console.log(to_do_list)
 
     var startDay = dayOfWeekOfMonth + 1
     format_calendar(startDay)
