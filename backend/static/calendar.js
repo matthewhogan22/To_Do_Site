@@ -72,8 +72,6 @@ function clear_calendar() {
 
 function dayClicked(element) {
     console.log(element.id);
-    const selectedDay = document.getElementById(element.id);
-    selectedDay.innerHTML += `<p>Event</p>`
 }
 
 async function getTodos() {
