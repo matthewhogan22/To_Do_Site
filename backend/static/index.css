@@ -67,7 +67,7 @@ body {
     flex-direction: column;
     width: 100%;
     background-color: gray;
-
+    z-index: 1;
 }
 
 .modal-content {
