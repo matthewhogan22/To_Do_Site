@@ -95,6 +95,11 @@ function renderCalendar() {
             var dayToAdd = document.getElementById(`div-day-${addIndex}`);
             console.log(item.title);
             dayToAdd.innerHTML += `<p>${item.title}</p>`
+        } else if (item.completed && (date_month - 1) == month) {
+            var addIndex = (Number(date_split[2]) - 1)
+            var dayToAdd = document.getElementById(`div-day-${addIndex}`);
+            console.log(item.title);
+            dayToAdd.innerHTML += `<p class="completed">${item.title}</p>`
         }
     });
 }

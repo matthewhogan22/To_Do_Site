@@ -76,3 +76,8 @@ table, th, td {
     background-color: darkgray;
     border-radius: 15px;
 }
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
