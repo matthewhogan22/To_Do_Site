@@ -135,3 +135,8 @@ body {
     align-items: flex-end;
     gap: 3px;
 }
+
+.input-date {
+    display: flex;
+    gap: 10px;
+}
