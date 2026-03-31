@@ -157,12 +157,12 @@ jQuery(async function($) {
     var jump_today = $("#jump-today");
     jump_today.on("click", async function e() {
         console.log("Jumping to today");
+        year = currDate.getFullYear();
         month = currDate.getMonth();
         firstDayOfMonth = new Date(year, month, 1);
         dayOfWeekOfMonth = firstDayOfMonth.getDay();
         startDay = dayOfWeekOfMonth + 1
         format_calendar(startDay)
-        await renderCalendar();
-        console.log("Render complete");
+        renderCalendar();
     });
 });
