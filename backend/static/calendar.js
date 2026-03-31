@@ -154,10 +154,14 @@ jQuery(async function($) {
         });
     }
 
-    var refresh_button = $("#refresh-button");
-    refresh_button.on("click", async function e() {
-        console.log("Calendar rendering");
-        console.log(to_do_list);
+    var jump_today = $("#jump-today");
+    jump_today.on("click", async function e() {
+        console.log("Jumping to today");
+        month = currDate.getMonth();
+        firstDayOfMonth = new Date(year, month, 1);
+        dayOfWeekOfMonth = firstDayOfMonth.getDay();
+        startDay = dayOfWeekOfMonth + 1
+        format_calendar(startDay)
         await renderCalendar();
         console.log("Render complete");
     });
