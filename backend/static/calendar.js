@@ -3,6 +3,7 @@
 const currDate = new Date();
 var year = currDate.getFullYear();
 var month = currDate.getMonth();
+const todayDay = currDate.getDate(); // returns todays date (19, 4, etc.)
 var firstDayOfMonth = new Date(year, month, 1);
 var dayOfWeekOfMonth = firstDayOfMonth.getDay();
 var numDaysInMonth = 0;
@@ -51,12 +52,19 @@ function format_calendar(startDay) {
     clear_calendar()
     for (let i = 0; i < getNumDaysInMonth(month); i++) {
             const item = document.getElementById(`day${startDay + i}`);
-            item.innerHTML +=   `<div class="cal-day" id="div-day-${i}" onclick="dayClicked(this)">
+            if (i + 1 == todayDay) {
+                item.innerHTML +=   `<div class="cal-day" id="div-day-${i}" onclick="dayClicked(this)">
+                                    <p class="day-header-today">
+                                        ${i+1}
+                                    </p>
+                                </div>`
+            } else {
+                item.innerHTML +=   `<div class="cal-day" id="div-day-${i}" onclick="dayClicked(this)">
                                     <p class="day-header">
                                         ${i+1}
                                     </p>
                                 </div>`
-                    
+            }    
     }
     const headerP = document.getElementById("month-head");
     var headerText = getMonthString(month) + " " + year;
@@ -92,7 +100,11 @@ function renderCalendar() {
             var addIndex = (Number(date_split[2]) - 1)
             var dayToAdd = document.getElementById(`div-day-${addIndex}`);
             console.log(item.title);
-            dayToAdd.innerHTML += `<p>${item.title}</p>`
+            if (addIndex < todayDay) {
+                dayToAdd.innerHTML += `<p class="overdue">${item.title}</p>`
+            } else {
+                dayToAdd.innerHTML += `<p>${item.title}</p>`
+            }
         } else if (item.completed && (date_month - 1) == month) {
             var addIndex = (Number(date_split[2]) - 1)
             var dayToAdd = document.getElementById(`div-day-${addIndex}`);
@@ -101,7 +113,6 @@ function renderCalendar() {
         }
     });
 }
-
 
 jQuery(async function($) {
     console.log("Calendar Ready");

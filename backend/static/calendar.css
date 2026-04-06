@@ -42,6 +42,10 @@ table, th, td {
     color: white;
 }
 
+.day-header-today {
+    color: #009DBF;
+}
+
 .calendar-header {
     display: flex;
     justify-content: space-between;
@@ -80,4 +84,8 @@ table, th, td {
 .completed {
     text-decoration: line-through;
     opacity: 0.6;
+}
+
+.overdue {
+    color: red;
 }
