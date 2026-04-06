@@ -44,6 +44,7 @@ table, th, td {
 
 .day-header-today {
     color: #009DBF;
+    font-weight: bold;
 }
 
 .calendar-header {

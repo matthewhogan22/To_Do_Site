@@ -4,6 +4,7 @@ const currDate = new Date();
 var year = currDate.getFullYear();
 var month = currDate.getMonth();
 const todayDay = currDate.getDate(); // returns todays date (19, 4, etc.)
+const todayMonth = currDate.getMonth();
 var firstDayOfMonth = new Date(year, month, 1);
 var dayOfWeekOfMonth = firstDayOfMonth.getDay();
 var numDaysInMonth = 0;
@@ -52,7 +53,7 @@ function format_calendar(startDay) {
     clear_calendar()
     for (let i = 0; i < getNumDaysInMonth(month); i++) {
             const item = document.getElementById(`day${startDay + i}`);
-            if (i + 1 == todayDay) {
+            if (i + 1 == todayDay && month == todayMonth) {
                 item.innerHTML +=   `<div class="cal-day" id="div-day-${i}" onclick="dayClicked(this)">
                                     <p class="day-header-today">
                                         ${i+1}
